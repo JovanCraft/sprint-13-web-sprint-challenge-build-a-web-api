@@ -3,12 +3,18 @@ const express = require('express');
 const router = express.Router();
 const Actions = require('./actions-model');
 
-router.get('/api/actions', async (req, res) => {
+router.get('/', (req, res, next) => {
     // Implement the GET /api/actions endpoint
+  Actions.get()
+  .then(action => {
+    res.json(action)
+  })
+  .catch(next)
   });
 
   router.get('/api/actions/:id', async (req, res) => {
     // Implement the GET /api/actions/:id endpoint
+    
   });
 
   router.post('/api/actions', async (req, res) => {
